@@ -31,10 +31,8 @@ void back(int *array, int a, int b, size_t size)
     if (a < b)
     {
         part = partition(array, a, b, size);
-        // printf("partition = %d\n", part);
         if (part != 0)
             back(array, a, part - 1, size);
-        // printf("second\n");
         back(array, part + 1, b, size);
     }
 }
@@ -85,8 +83,6 @@ void swaper(int a, int b, int *array)
 {
     int temp;
 
-    printf("a = %d\n", a);
-    printf("b = %d\n", b);
     temp = array[a];
     array[a] = array[b];
     array[b] = temp;
