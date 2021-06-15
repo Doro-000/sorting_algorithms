@@ -68,7 +68,7 @@ int partition(int *array, int low, int hi, size_t size)
 		swaper(j, hi, array);
 		print_array(array, size);
 	}
-	return j;
+	return (j);
 }
 
 /**
