@@ -72,3 +72,22 @@ int partition(int *array, int low, int hi, size_t size)
     }
     return j;
 }
+
+/**
+ * swaper - swap to integers
+ * @a: first integer
+ * @b: secoond integer
+ * @array: array
+ *
+ * Return: swaped integers
+ */
+void swaper(int a, int b, int *array)
+{
+    int temp;
+
+    printf("a = %d\n", a);
+    printf("b = %d\n", b);
+    temp = array[a];
+    array[a] = array[b];
+    array[b] = temp;
+}
