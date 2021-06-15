@@ -11,6 +11,7 @@ void quick_sort(int *array, size_t size)
 	if (lo < hi)
 	{
 		p = partition(array, size);
+		print_array(array, size);
 		if (p != -1)
 		{
 			quick_sort(array, p);
