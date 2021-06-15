@@ -21,24 +21,24 @@ void insertion_sort_list(listint_t **list)
 	cursor = *list;
 	while (cursor != NULL)
 	{
-	        if (cursor->prev != NULL)
-	        {
-                        cursor_2 = cursor;
-                        cursor = cursor->next;
-                        while(cursor_2->prev != NULL)
-                        {
-                                first = (cursor_2->prev)->n;
-                                second = cursor_2->n;
-                                if (first <= second)
-                                        break;
-                                swap_nodes(cursor_2->prev, cursor_2);
-                                if (cursor_2->prev == NULL)
-                                        *list = cursor_2;
-                                print_list(*list);
-                        }
-	        }
-	        else
-		        cursor = cursor->next;
+		if (cursor->prev != NULL)
+		{
+			cursor_2 = cursor;
+			cursor = cursor->next;
+			while (cursor_2->prev != NULL)
+			{
+				first = (cursor_2->prev)->n;
+				second = cursor_2->n;
+				if (first <= second)
+					break;
+				swap_nodes(cursor_2->prev, cursor_2);
+				if (cursor_2->prev == NULL)
+					*list = cursor_2;
+				print_list(*list);
+			}
+		}
+		else
+			cursor = cursor->next;
 	}
 }
 
