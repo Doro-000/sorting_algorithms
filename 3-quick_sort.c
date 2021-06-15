@@ -62,7 +62,7 @@ int partition(int *array, size_t low, size_t hi, size_t size)
 			j++;
 		}
 	}
-	if (j != hi)
+	if (j != hi && array[j] != array[hi])
 	{
 		swaper(j, hi, array);
 		print_array(array, size);
