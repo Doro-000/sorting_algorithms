@@ -10,14 +10,11 @@
 void heap_sort(int *array, size_t size)
 {
 	size_t temp_s = size;
-	int temp;
 
 	while (temp_s > 1)
 	{
 		heapify(array, temp_s, size);
-		temp = array[0];
-		array[0] = array[temp_s - 1];
-		array[temp_s - 1] = temp;
+		swaper(0, temp_s - 1, array);
 		print_array(array, size);
 		temp_s--;
 	}
@@ -34,7 +31,6 @@ void heap_sort(int *array, size_t size)
 void heapify(int *array, size_t size, size_t original_s)
 {
 	size_t i;
-	int temp;
 
 	for (i = (size - 1); (signed int) i >= 0 ; i--)
 	{
@@ -46,13 +42,13 @@ void heapify(int *array, size_t size, size_t original_s)
 				{
 					if (array[RIGHT(i)] >= array[LEFT(i)])
 					{
-						swapper(i, RIGHT(i), array);
+						swaper(i, RIGHT(i), array);
 						i = RIGHT(i);
 						print_array(array, original_s);
 					}
 					else
 					{
-						swapper(i, LEFT(i), array);
+						swaper(i, LEFT(i), array);
 						i = LEFT(i);
 						print_array(array, original_s);
 					}
@@ -64,7 +60,7 @@ void heapify(int *array, size_t size, size_t original_s)
 			{
 				if (array[LEFT(i)] > array[i])
 				{
-					swapper(i, LEFT(i), array);
+					swaper(i, LEFT(i), array);
 					print_array(array, original_s);
 				}
 				break;
