@@ -13,10 +13,6 @@ void cocktail_sort_list(listint_t **list)
 	listint_t *temp;
 	int swapped = 0;
 
-	if (!list || !*list || !(*list)->next)
-		return;
-
-
 	do {
 		swapped = 0;
 		for (temp = *list; temp->next != NULL; temp = temp->next)
