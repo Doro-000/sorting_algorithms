@@ -3,6 +3,12 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+
+/*These macros are used to locate left, right and parent node
+in a binary tree built as an array*/
+#define LEFT(i) ((2 * i) + 1)
+#define RIGHT(i) ((2 * i) + 2)
+#define PARENT(i) ((i - 1) / 2)
 /**
  * struct listint_s - Doubly linked list node
  *
@@ -29,6 +35,7 @@ void selection_sort(int *array, size_t size);
 void quick_sort(int *array, size_t size);
 void shell_sort(int *array, size_t size);
 void counting_sort(int *array, size_t size);
+void heap_sort(int *array, size_t size);
 
 /*helpers*/
 void back(int *array, int a, int b, size_t size);
@@ -36,6 +43,6 @@ void swap_nodes(listint_t *first, listint_t *second);
 void swaper(int a, int b, int *array);
 void back(int *array, int a, int b, size_t size);
 int partition(int *array, size_t low, size_t hi, size_t size);
-
+void heapify(int *array, size_t size, size_t original_s);
 
 #endif /*SORT*/
