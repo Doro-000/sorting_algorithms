@@ -10,9 +10,9 @@
 void cocktail_sort_list(listint_t **list)
 {
 	listint_t *temp;
-	int swapped = 0;
+	int swapped;
 
-	while (swapped)
+	while (swapped == 1)
 	{
 		swapped = 0;
 		for (temp = *list; temp->next != NULL; temp = temp->next)
