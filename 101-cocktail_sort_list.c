@@ -7,41 +7,43 @@
  * Return: void function
  */
 
+
 void cocktail_sort_list(listint_t **list)
 {
-	listint_t *temp;
-	int swapped;
+	listint_t *temp = *list;
+	int swapped = 0;
 
-	while (swapped == 1)
+	if (!list || !*list || !(*list)->next)
+		return;
+
+	while (!swapped)
 	{
-		swapped = 0;
-		for (temp = *list; temp->next != NULL; temp = temp->next)
+		swapped = 1;
+		while (temp->next != NULL)
 		{
 			if ((temp->n) > ((temp->next)->n))
 			{
 				swap_link(temp, temp->next, list);
 				print_list(*list);
-				swapped = 1;
-				temp = temp->prev;
+				swapped = 0;
+				temp = temp->next;
 			}
 		}
-		if (swapped == 0)
+		if (swapped == 1)
 			break;
-		swapped = 0;
+		swapped = 1;
 		while (temp->prev != NULL)
 		{
 			if ((temp->n) < ((temp->prev)->n))
 			{
 				swap_link(temp->prev, temp, list);
-				swapped = 1;
+				swapped = 0;
 				print_list(*list);
-				temp = temp->next;
+				temp = temp->prev;
 			}
-			temp = temp->prev;
 		}
 	}
 }
-
 /**
  * swap_link - swap adjacent nodes of a doubly linked list
  * @first: first node
