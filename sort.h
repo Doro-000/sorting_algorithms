@@ -4,10 +4,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-/**
- * These macros are used to locate left, right and parent node
- * in a binary tree built as an array
- */
 #define LEFT(i) ((2 * i) + 1)
 #define RIGHT(i) ((2 * i) + 2)
 #define PARENT(i) ((i - 1) / 2)
