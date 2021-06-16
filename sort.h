@@ -40,7 +40,7 @@ void merge_sort(int *array, size_t size);
 /*helpers*/
 void back(int *array, int a, int b, size_t size);
 void swap_nodes(listint_t *first, listint_t *second);
-void swap_link(listint_t *first, listint_t *second, listint_t **head);
+void swap_link(listint_t **head, listint_t *node1, listint_t *node2);
 void swaper(int a, int b, int *array);
 void back(int *array, int a, int b, size_t size);
 int partition(int *array, size_t low, size_t hi, size_t size);
