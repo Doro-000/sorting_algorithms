@@ -18,12 +18,11 @@ void cocktail_sort_list(listint_t **list)
 
 
 	do {
-		swapped = 0;
 		for (temp = *list; temp->next != NULL; temp = temp->next)
 		{
 			if (temp->n > temp->next->n)
 			{
-				swap_link(temp, temp->next, list);
+				swap_link(list, temp, temp->next);
 				print_list(*list);
 				swapped = 1;
 				temp = temp->prev;
@@ -36,13 +35,13 @@ void cocktail_sort_list(listint_t **list)
 		{
 			if (temp->n < temp->prev->n)
 			{
-				swap_link(temp->prev, temp, list);
+				swap_link(list, temp->prev, temp);
 				swapped = 1;
 				print_list(*list);
 				temp = temp->next;
 			}
 		}
-	} while (swapped);
+	} while (swapped == 1);
 }
 
 /**
