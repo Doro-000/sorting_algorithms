@@ -16,33 +16,35 @@ void cocktail_sort_list(listint_t **list)
 	if (!list || !*list || !(*list)->next)
 		return;
 
-	while (!swapped)
-	{
-		swapped = 1;
+
+	do {
+		swapped = 0;
 		while (temp->next != NULL)
 		{
 			if ((temp->n) > ((temp->next)->n))
 			{
 				swap_link(temp, temp->next, list);
 				print_list(*list);
-				swapped = 0;
-				temp = temp->next;
+				swapped = 1;
+				temp = temp->prev;
 			}
+			temp = temp->next;
 		}
-		if (swapped == 1)
+		if (swapped == 0)
 			break;
-		swapped = 1;
+		swapped = 0;
 		while (temp->prev != NULL)
 		{
 			if ((temp->n) < ((temp->prev)->n))
 			{
 				swap_link(temp->prev, temp, list);
-				swapped = 0;
+				swapped = 1;
 				print_list(*list);
-				temp = temp->prev;
+				temp = temp->next;
 			}
+			temp = temp->prev;
 		}
-	}
+	}while (swapped);
 }
 /**
  * swap_link - swap adjacent nodes of a doubly linked list
