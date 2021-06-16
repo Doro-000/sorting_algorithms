@@ -12,7 +12,7 @@ void heap_sort(int *array, size_t size)
 	size_t temp_s = size;
 	int temp;
 
-	while(temp_s > 1)
+	while (temp_s > 1)
 	{
 		heapify(array, temp_s, size);
 		temp = array[0];
@@ -36,7 +36,7 @@ void heapify(int *array, size_t size, size_t original_s)
 	size_t i;
 	int temp;
 
-	for (i = (size - 1); (signed) i >= 0 ; i--)
+	for (i = (size - 1); (signed int) i >= 0 ; i--)
 	{
 		while (LEFT(i) < size)
 		{
@@ -46,17 +46,13 @@ void heapify(int *array, size_t size, size_t original_s)
 				{
 					if (array[RIGHT(i)] >= array[LEFT(i)])
 					{
-						temp = array[i];
-						array[i] = array[RIGHT(i)];
-						array[RIGHT(i)] = temp;
+						swapper(i, RIGHT(i), array);
 						i = RIGHT(i);
 						print_array(array, original_s);
 					}
 					else
 					{
-						temp = array[i];
-						array[i] = array[LEFT(i)];
-						array[LEFT(i)] = temp;
+						swapper(i, LEFT(i), array);
 						i = LEFT(i);
 						print_array(array, original_s);
 					}
@@ -68,13 +64,28 @@ void heapify(int *array, size_t size, size_t original_s)
 			{
 				if (array[LEFT(i)] > array[i])
 				{
-					temp = array[i];
-					array[i] = array[LEFT(i)];
-					array[LEFT(i)] = temp;
+					swapper(i, LEFT(i), array);
 					print_array(array, original_s);
 				}
 				break;
 			}
 		}
 	}
+}
+
+/**
+ * swaper - swap to integers
+ * @a: first integer
+ * @b: secoond integer
+ * @array: array
+ *
+ * Return: swaped integers
+ */
+void swaper(int a, int b, int *array)
+{
+	int temp;
+
+	temp = array[a];
+	array[a] = array[b];
+	array[b] = temp;
 }
