@@ -10,30 +10,31 @@
 void cocktail_sort_list(listint_t **list)
 {
 	listint_t *temp = *list;
-	int swapped;
+	int swapped = 0;
 
-	do {
-		swapped = 0;
+	while (!swapped)
+	{
+		swapped = 1;
 		while (temp->next != NULL)
 		{
 			if ((temp->n) > ((temp->next)->n))
 			{
 				swap_nodes(temp, temp->next);
 				print_list(*list);
-				swapped = 1;
+				swapped = 0;
 				continue;
 			}
 			temp = temp->next;
 		}
-		if (swapped == 0)
+		if (swapped == 1)
 			break;
-		swapped = 0;
+		swapped = 1;
 		while (temp->prev != NULL)
 		{
 			if ((temp->n) < ((temp->prev)->n))
 			{
 				swap_nodes(temp->prev, temp);
-				swapped = 1;
+				swapped = 0;
 				if (temp->prev == NULL)
 					*list = temp;
 				print_list(*list);
