@@ -1,4 +1,3 @@
-
 #include "sort.h"
 
 /**
@@ -56,14 +55,17 @@ void cocktail_sort_list(listint_t **list)
  */
 void swap_link(listint_t *first, listint_t *second, listint_t **head)
 {
-	if (first->prev != NULL)
-		(first->prev)->next = second;
+	listint_t *a = first->prev;
+	listint_t *b = second->next;
+
+	if (a != NULL)
+		(a)->next = second;
 	else
 		*head = second;
 	first->prev = second;
-	first->next = second->next;
-	second->prev = first->prev;
+	first->next = b;
+	second->prev = a;
 	second->next = first;
-	if (second->next != NULL)
-		(second->next)->prev = first;
+	if (b)
+		(b)->prev = first;
 }
