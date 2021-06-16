@@ -42,8 +42,9 @@ void cocktail_sort_list(listint_t **list)
 				temp = temp->next;
 			}
 		}
-	}while (swapped);
+	} while (swapped);
 }
+
 /**
  * swap_link - swap adjacent nodes of a doubly linked list
  * @first: first node
