@@ -1,68 +1,65 @@
+  
 #include "sort.h"
 
 /**
- * cocktail_sort_list - cocktail sorting method
- * @list: head of linked list
- *
- * Return: void function
+ * swap_link - swaps two nodes
+ * @head: head of the list
+ * @node1: first node to sort
+ * @node2: second node to sort
  */
+void swap_link(listint_t **head, listint_t *node1, listint_t *node2)
+{
+	listint_t *prev, *next;
 
+	prev = node1->prev;
+	next = node2->next;
 
+	if (prev != NULL)
+		prev->next = node2;
+	else
+		*head = node2;
+	node1->prev = node2;
+	node1->next = next;
+	node2->prev = prev;
+	node2->next = node1;
+	if (next)
+		next->prev = node1;
+}
+/**
+ * cocktail_sort_list - sorts a list using the cocktail sort algorithm
+ * @list: list to sort
+ */
 void cocktail_sort_list(listint_t **list)
 {
-	listint_t *temp;
-	int swapped = 0;
+	listint_t *head;
+	int flag = 0;
 
 	if (!list || !*list || !(*list)->next)
 		return;
 
-
 	do {
-		swapped = 0;
-		for (temp = *list; temp->next != NULL; temp = temp->next)
+		for (head = *list; head->next != NULL; head = head->next)
 		{
-			if ((temp->n) > ((temp->next)->n))
+			if (head->n > head->next->n)
 			{
-				swap_link(temp, temp->next, list);
+				swap_link(list, head, head->next);
 				print_list(*list);
-				swapped = 1;
-				temp = temp->prev;
+				flag = 1;
+				head = head->prev;
 			}
 		}
-		if (swapped == 0)
+		if (flag == 0)
 			break;
-		swapped = 0;
-		for (; temp->prev != NULL; temp = temp->prev)
+		flag = 0;
+		for (; head->prev != NULL; head = head->prev)
 		{
-			if ((temp->n) < ((temp->prev)->n))
+			if (head->n < head->prev->n)
 			{
-				swap_link(temp->prev, temp, list);
-				swapped = 1;
+				swap_link(list, head->prev, head);
 				print_list(*list);
-				temp = temp->next;
+				flag = 1;
+				head = head->next;
 			}
 		}
-	} while (swapped);
-}
-
-/**
- * swap_link - swap adjacent nodes of a doubly linked list
- * @first: first node
- * @second: second node
- * @head: head of list
- *
- * Return: void
- */
-void swap_link(listint_t *first, listint_t *second, listint_t **head)
-{
-	if (first->prev != NULL)
-		(first->prev)->next = second;
-	else
-		*head = second;
-	first->prev = second;
-	first->next = second->next;
-	second->prev = first->prev;
-	second->next = first;
-	if (second->next != NULL)
-		(second->next)->prev = first;
+	} while (flag == 1);
 }
