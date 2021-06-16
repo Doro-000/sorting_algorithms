@@ -59,9 +59,9 @@ void swap_link(listint_t *first, listint_t *second)
 
 	if (a != NULL)
 		(a)->next = second;
-	second->prev = a;
 	first->prev = second;
 	first->next = b;
+	second->prev = a;
 	second->next = first;
 	if (second->next != NULL)
 		b->prev = first;
