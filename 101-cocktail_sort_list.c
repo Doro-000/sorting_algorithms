@@ -1,4 +1,3 @@
-
 #include "sort.h"
 
 /**
@@ -20,7 +19,7 @@ void cocktail_sort_list(listint_t **list)
 		{
 			if ((temp->n) > ((temp->next)->n))
 			{
-				swap_nodes(temp, temp->next);
+				swap_link(temp, temp->next);
 				print_list(*list);
 				swapped = 1;
 				continue;
@@ -34,7 +33,7 @@ void cocktail_sort_list(listint_t **list)
 		{
 			if ((temp->n) < ((temp->prev)->n))
 			{
-				swap_nodes(temp->prev, temp);
+				swap_link(temp->prev, temp);
 				swapped = 1;
 				if (temp->prev == NULL)
 					*list = temp;
@@ -47,7 +46,7 @@ void cocktail_sort_list(listint_t **list)
 }
 
 /**
- * swap_nodes - swap adjacent nodes of a doubly linked list
+ * swap_link - swap adjacent nodes of a doubly linked list
  * @first: first node
  * @second: second node
  *
