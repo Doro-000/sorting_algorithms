@@ -25,8 +25,9 @@ void cocktail_sort_list(listint_t **list)
 				swap_link(temp, temp->next, list);
 				print_list(*list);
 				swapped = 0;
-				temp = temp->next;
+				temp = temp->prev;
 			}
+			temp = temp->next;
 		}
 		if (swapped == 1)
 			break;
@@ -38,8 +39,9 @@ void cocktail_sort_list(listint_t **list)
 				swap_link(temp->prev, temp, list);
 				swapped = 0;
 				print_list(*list);
-				temp = temp->prev;
+				temp = temp->next;
 			}
+			temp = temp->prev;
 		}
 	}
 }
