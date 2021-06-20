@@ -2,7 +2,7 @@
 
 
 /**
- * merge_sort - Implementation of merge sort 
+ * merge_sort - Implementation of merge sort
  * @array: array to be sorted
  * @size: size of the array
  *
@@ -47,7 +47,9 @@ int *merge(int *arrayA, int *arrayB, int size_A, int size_B)
 	temp_array = malloc(sizeof(*temp_array) * (size_A + size_B));
 	if (temp_array == NULL)
 		return (NULL);
-	i = 0; j = 0; k = 0;
+	i = 0;
+	j = 0;
+	k = 0;
 	printf("Merging...\n");
 	printf("[left]: ");
 	print_array(arrayA, size_A);
